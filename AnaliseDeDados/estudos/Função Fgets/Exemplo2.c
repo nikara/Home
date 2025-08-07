@@ -18,16 +18,24 @@ int main(){
 	}
 	
 	while (fgets(buffer,sizeof(buffer),file) != NULL){
-		printf("Read: %s", buffer);
+		printf(" Read: %s", buffer);
 		
 	}
 	
 	if(feof(file)){
-		printf("End of file reached.\n");
+		printf(" End of file reached.\n");
 	}else if(ferror(file)){
-		printf("An error occurred.\n");
+		printf(" An error occurred.\n");
 	}
 	fclose(file);
 	
 	return 0;
+	
+	/*
+Saída
+Após a execução do código acima, obtemos o seguinte resultado
+
+(This output will depend on the contents of example.txt)
+End of file reached.
+	*/
 }

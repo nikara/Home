@@ -1,0 +1,1 @@
+Se esta lendo isso e por que o programa em C deve ter funcionado, o linguagem chata
