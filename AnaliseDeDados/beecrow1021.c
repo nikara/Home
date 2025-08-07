@@ -1,4 +1,3 @@
-#include <stdio.h>
 
 /* Leia um valor de ponto flutuante com duas casas decimais. 
 Este valor representa um valor monetário. A seguir, calcule o 
@@ -16,33 +15,32 @@ Imprima a quantidade mínima de notas e moedas necessárias para trocar o valor 
 Obs: Utilize ponto (.) para separar a parte decimal.
 */
 
-#define n 6 // Constante para o vetor das nota
-#define m 7 // Constante para o vetor das moeda
-#define r 13 // Constante para o vetor recebe
+#include <stdio.h>
 
 
-int main(){
-	double valor = 573.73;
-	double nota[n] = {100,50,20,10,5,2};
-	double moeda[m] = {1,0.5,0.25,0.10,0.05,0.05,0.01};
-	int caixa[12] = {0,0,0,0,0,0,0,0,0,0,0,0};
-	double acumulador = 0;
+int main() { 
+	double valor;
+	scanf ("%lf",&valor);
+	int notas[] = {100,50,20,10,5,2};
+	double moedas[] = {1.00,0.50,0.25,0.10,0.05,0.01};
 	
-
+	int qtdNotas, qtdMoedas;
 	
-	printf("Notas:");
+	printf("NOTAS:");
 	for(int i = 0; i < 6; i++){
-		caixa[i] = (int) (valor-acumulador) / nota[i] ;
-		printf("\n %d nota(s) de R$ %2.2f ",caixa[i],nota[i]);
-		acumulador += nota[i]* caixa[i];
-	}
-	printf("\n Moedas:");
-	for(int i = 6; i < 12; i++){
-		caixa[i] = (valor-acumulador) / moeda[i-6] ;
-		printf("\n %2.2f moeda(s) de R$ %2.2f ",caixa[i],moeda[i-6]);
-		acumulador += moeda[6-i]*caixa[i];
+		qtdNotas = (int) (valor / notas[i]) ;
+		printf("\n %d nota(s) de R$ %.2f ",qtdNotas,(double)notas[i]);
+		valor -= qtdNotas* notas[i];
 	}
 	
+	valor = (int)(valor * 100+0.5);
+	
+	printf("\n MOEDAS:");
+	for(int i = 0; i < 6; i++){
+		qtdMoedas = (int) (valor / moedas[i]) ;
+		printf("\n %d moeda(s) de R$ %.2f ",qtdMoedas,moedas[i]);
+		valor -= qtdMoedas*(int)moedas[i];
+	}
 	
 	return 0;
 	
