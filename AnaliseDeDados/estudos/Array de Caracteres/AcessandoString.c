@@ -47,7 +47,7 @@ int main(){
 	
 	// Modificando um caractere (string são mutáveis em C)
 	saudacao[0] = 'o'; // Altera 'O' para 'o'
-	prinft("\nString apos modificacao: %s\n", saudacao);
+	printf("\nString apos modificacao: %s\n", saudacao);
 	
 	return 0;
 }
