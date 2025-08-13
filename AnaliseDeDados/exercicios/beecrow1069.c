@@ -79,7 +79,7 @@ int main() {
 int n = 0;
 // Lê e armazena o valor n
 scanf ("%d", &n);
-
+getchar();
 
 
 for(int i = 0; i < n; i++){
@@ -91,24 +91,27 @@ for(int i = 0; i < n; i++){
 	int diamante = 0;
 	
 	// armazena os valores que seram inseridos
-	char x[1000];
-	
-	//recebe os valores
-	scanf("%s", &x);
+	char x[MAX_SIZE];
+	fgets(x,MAX_SIZE,stdin);
+	x[strcspn(x,"\n")]=0;
 	
 	// recebe o comprimento do x
 	int comprimento = 0;
 	comprimento = strlen(x);
 	
 	for(int t = 0; t < comprimento; t++){
-		if(x[t])
+		if(x[t] == '<'){
+		
 			push(&caixa,x[t]);
-		}else if (!isEmpty(&caixa) && x[t] != '.'){
+		}
+		else if (!isEmpty(&caixa) && x[t] == '>'){
 			pop(&caixa);
 			diamante += 1;
 		}
 	}
-	printl("%d",diamante);
+	printf("%d\n",diamante);
 
+}
 return 0;
+
 }
