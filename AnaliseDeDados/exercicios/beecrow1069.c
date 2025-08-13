@@ -44,6 +44,17 @@ int isFull(pilha *s){
 	return s -> top == MAX_SIZE - 1;
 }
 
+char peek(pilha *s){
+	if(isEmpty(s)){
+		printf("Erro: Pilha vazia!");
+	}
+	return s -> items[s->top];
+}
+
+int size(pilha *s){
+	return s -> top + 1;
+}
+
 void push(pilha *s, char value){
 	if(isFull(s)){
 		printf("Erro: Pilha cheia !");
@@ -64,37 +75,40 @@ void pop(pilha *s){
 
 
 int main() { 
-
-int n;
+// Valor n par os loops
+int n = 0;
+// Lê e armazena o valor n
 scanf ("%d", &n);
 
-//Instaciando a pilha
-pilha caixa;
-iniciarPilha(&caixa);
 
-for (int i = 0; i < n; i++){
+
+for(int i = 0; i < n; i++){
+	// inicializa a pilha
+	pilha caixa;
+	iniciarPilha(&caixa);
 	
-	// Variavel para guarda a entrda
-	char entrada[1000];
-	gets(entrada);
-	int comprimento = strlen(entrada);
+	// conta os diamente;
+	int diamante = 0;
+	
+	// armazena os valores que seram inseridos
+	char x[1000];
+	
+	//recebe os valores
+	scanf("%s", &x);
+	
+	// recebe o comprimento do x
+	int comprimento = 0;
+	comprimento = strlen(x);
+	
 	for(int t = 0; t < comprimento; t++){
-		if(entrada[t] == '<'){
-			push(&caixa,entrada[t]);
-		}else if(entrada[t] == '>'){
-			push(&caixa,entrada[t]);
+		if(x[t])
+			push(&caixa,x[t]);
+		}else if (!isEmpty(&caixa) && x[t] != '.'){
+			pop(&caixa);
+			diamante += 1;
 		}
 	}
-}
-
-while(1){
-	
-	
-	
-	
-}
-
-
+	printl("%d",diamante);
 
 return 0;
 }
