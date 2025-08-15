@@ -29,7 +29,7 @@ uma delas contendo as palavras correct ou incorrect de acordo com as regras acim
 #include <string.h>
 
 // Implentação da pilha
-#define MAX_SIZE 100 // Tamanho máximo da pilha
+#define MAX_SIZE 1002 // Tamanho máximo da pilha
 
 // Estrutura para represar a pilha
 
@@ -82,27 +82,41 @@ char peek(Stack *s){
 	}
 }
 
-// Main
-
 int main(){
-	// Iniciando a pilha onde o colchete serão armazenados
 	
-	int N;
-	scanf("%d",&N);
-	getchar();
+	// recebe as expressões
+	char expressao[MAX_SIZE];
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	while(fgets(expressao,sizeof(expressao),stdin) != NULL){
+		
+		Stack pilha;
+		initialize(&pilha);
+		
+		// Criando o comprimento da expresssao
+		int comprimento = 0;
+		comprimento = strlen(expressao);
+		
+		// Loop para analisar a expressao
+		for(int i = 0; i < comprimento; i++){
+			// recebe os colchetes abertos'('
+			if(expressao[i] == '('){
+				push(&pilha,expressao[i]);
+			}else if(expressao[i] == ')'){
+				if(isEmpty(&pilha)){
+					printf("incorret\n");
+					break;
+				}else{
+					pop(&pilha);
+				}
+			}
+		}
+		if(isEmpty(&pilha)){
+			printf("corret\n");
+		}else{
+			printf("incorret\n");
+		}
+		
+	}
 	
 	return 0;
 }
