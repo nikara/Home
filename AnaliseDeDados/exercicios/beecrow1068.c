@@ -96,6 +96,9 @@ int main(){
 		int comprimento = 0;
 		comprimento = strlen(expressao);
 		
+		//Valida se esta incorreto
+		bool correto = true;
+		
 		// Loop para analisar a expressao
 		for(int i = 0; i < comprimento; i++){
 			// recebe os colchetes abertos'('
@@ -103,14 +106,14 @@ int main(){
 				push(&pilha,expressao[i]);
 			}else if(expressao[i] == ')'){
 				if(isEmpty(&pilha)){
-					printf("incorret\n");
+					correto = false;
 					break;
 				}else{
 					pop(&pilha);
 				}
 			}
 		}
-		if(isEmpty(&pilha)){
+		if(correto && isEmpty(&pilha)){
 			printf("corret\n");
 		}else{
 			printf("incorret\n");
