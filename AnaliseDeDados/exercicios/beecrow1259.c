@@ -85,6 +85,10 @@ char peek(Stack *s){
 		return s -> items[s -> top];
 	}
 }
+// Retorna o tamanha da pilha(Size)
+int size(Stack *s){
+	return s -> top + 1;
+}
 
 int main() { 
 
@@ -130,5 +134,11 @@ initialize(&par);
 			}
 		}	
 	}
+	
+// Ordena a pilha par
+
+for (int i = 0; i < size(&par); i++){
+	
+}
 return 0;
 }
