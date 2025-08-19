@@ -11,6 +11,16 @@ typedef struct no{
 	struct no *proximo;	
 }No;
 
+typedef struct{
+	No *inicio;
+	int tam;
+}Lista;
+
+void criar_lista(Lista *lista){
+	lista -> inicio = NULL;
+	lista -> tam = 0;
+};
+
 // procedimento para inserir no inicio
 
 void  inserir_no_inicio (No **lista, int num){

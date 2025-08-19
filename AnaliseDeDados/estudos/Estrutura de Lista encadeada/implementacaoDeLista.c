@@ -136,14 +136,43 @@ void freeList(Lista* list){
 int main(){
 	
 	Lista myList;
-	initList(&myList)
+	initList(&myList);
 	
 	// Inserir elemento no início 
 	insertAtBeginning(&myList,10);
 	insertAtBeginning(&myList,20);
-	insertAtBegining
+	insertAtBeginning(&myList,30);
+	printList(&myList);
+
+	// Inserir elementos no final
+	insertAtEnd(&myList, 5);
+	insertAtEnd(&myList,15);
+	printList(&myList);
 	
+	// Buscar um elemento 
+	Node* found = searchElement(&myList,20);
+	if(found != NULL){
+		printf("Elemento 20 encontrado na lista.\n");
+	}else{
+		printf("Elemento 20 não encontrado na lista.\n");
+	}
 	
+	found = searchElement(&myList,99);
+	if(found != NULL){
+		printf("Elemento 99 não encontrado na lista.\n");
+	}
+	
+	// Remover do início
+	removeFromBeginning(&myList);
+	printList(&myList);
+	
+	// Remover do final
+	removeFromEnd(&myList);
+	printList(&myList);
+	
+	// Liberar a mémoria da lista
+	freeList(&myList);
+	printList(&myList); // Deve mostrar que a lista está vazia
 	
 	return 0;
 }
